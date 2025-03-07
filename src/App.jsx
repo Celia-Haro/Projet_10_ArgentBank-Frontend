@@ -1,9 +1,14 @@
+import { Outlet } from 'react-router-dom'
+import Footer from './components/footer/Footer'
+import Navigation from './components/navigation/Navigation'
+
 export default function App() {
 
   return (
     <>
-      <h1>Argent Bank</h1>
-      <p>ça fonctionne</p>
+      <Navigation />
+      <Outlet />
+      <Footer />
     </>
   )
 }
