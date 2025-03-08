@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 5px 20px;
+}
+
+nav a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #2c3e50;
+
+    i {
+        margin-right: 4px;
+    }
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}

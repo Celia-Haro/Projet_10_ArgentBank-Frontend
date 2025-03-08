@@ -1,8 +1,10 @@
+import "./footer.module.scss"
+
 export default function Footer() {
 
     return (
-        <>
-            <p>je suis le composant Footer</p>
-        </>
+        <footer>
+            <p>Copyright 2020 Argent Bank</p>
+        </footer>
     )
 }

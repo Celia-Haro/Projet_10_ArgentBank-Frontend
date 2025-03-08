@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import Home from './views/home/Home';
 import LogIn from './views/logIn/LogIn';
-import UserAccountView from './views/userAccountView/UserAccountView';
+import UserDashboard from './views/userDashboard/UserDashboard';
 import UserAccountDetail from './views/userAccountDetail/UserAccountDetail';
 
 export const router = createBrowserRouter([
@@ -19,8 +19,8 @@ export const router = createBrowserRouter([
                 element: <LogIn />
             },
             {
-                path: '/user-account-view',
-                element: <UserAccountView />,
+                path: '/user-dashboard',
+                element: <UserDashboard />,
             },
             {
                 path: '/user-account-detail',
