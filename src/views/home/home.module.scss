@@ -28,6 +28,12 @@
     font-size: 0.9rem;
 }
 
+.features {
+    display: flex;
+    flex-direction: column;
+}
+
+
 @media (min-width: 920px) {
     .hero {
         height: 400px;
@@ -48,5 +54,9 @@
 
     .heroContent .text {
         font-size: 1.2rem;
+    }
+
+    .features {
+        flex-direction: row;
     }
 }
