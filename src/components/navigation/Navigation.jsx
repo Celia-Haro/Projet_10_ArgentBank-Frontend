@@ -11,7 +11,7 @@ export default function Navigation() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
 
-            <Link to="log-in" className={styles.navLink}>
+            <Link to="sign-in" className={styles.navLink}>
                 <i className="fa fa-user-circle"></i>
                 Sign In
             </Link>

@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import Home from './views/home/Home';
-import LogIn from './views/logIn/LogIn';
 import UserDashboard from './views/userDashboard/UserDashboard';
 import UserAccountDetail from './views/userAccountDetail/UserAccountDetail';
+import SignIn from './views/signIn/SignIn';
 
 export const router = createBrowserRouter([
     {
@@ -15,8 +15,8 @@ export const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: 'log-in',
-                element: <LogIn />
+                path: 'sign-in',
+                element: <SignIn />
             },
             {
                 path: '/user-dashboard',

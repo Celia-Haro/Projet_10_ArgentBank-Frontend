@@ -7,12 +7,8 @@ export default function App() {
 
   return (
     <>
-      <header>
-        <Navigation />
-      </header>
-      <main>
-        <Outlet />
-      </main>
+      <Navigation />
+      <Outlet />
       <Footer />
     </>
   )
