@@ -1,16 +1,17 @@
 import { useState } from "react";
 import styles from "./signInForm.module.scss"
+import { useNavigate } from "react-router-dom";
 
 export default function SignInForm() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log("email et password :", { email, password });
-        console.log(JSON.stringify({ email, password }))
+        setErrorMessage("");
 
         try {
             const response = await fetch("http://localhost:3001/api/v1/user/login", {
@@ -22,17 +23,18 @@ export default function SignInForm() {
             });
 
             const data = await response.json();
-            console.log(data)
+
             if (response.ok) {
-                console.log("ça a marché");
+                setErrorMessage("");
+                localStorage.setItem("token", data.token);
+                navigate("/user-dashboard");
             } else {
-                throw new Error(data.message || "Login failed");
+                throw new Error(data.message || "Identifiants incorrects.");
             }
         } catch (error) {
-            console.log("erreur", error);
+            setErrorMessage(error.message || "Le service est momentanément indisponible.");
         }
     };
-
     return (
 
         <form onSubmit={handleSubmit}>
@@ -61,6 +63,7 @@ export default function SignInForm() {
             </div>
 
             <button type="submit" className={styles.signInButton}>Sign In</button>
+            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         </form >
     );
 }
