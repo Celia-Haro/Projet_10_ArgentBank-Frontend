@@ -1,17 +1,19 @@
 import { useState } from "react";
-import styles from "./signInForm.module.scss"
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess, loginFailure } from "../../redux/authSlice";
 import { useNavigate } from "react-router-dom";
+import styles from "./signInForm.module.scss"
 
 export default function SignInForm() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const error = useSelector((state) => state.auth.error);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrorMessage("");
 
         try {
             const response = await fetch("http://localhost:3001/api/v1/user/login", {
@@ -25,14 +27,14 @@ export default function SignInForm() {
             const data = await response.json();
 
             if (response.ok) {
-                setErrorMessage("");
-                localStorage.setItem("token", data.token);
+                dispatch(loginSuccess({ user: data.user, token: data.token }));
                 navigate("/user-dashboard");
             } else {
-                throw new Error(data.message || "Identifiants incorrects.");
+                dispatch(loginFailure(data.message || "Login failed"));
             }
         } catch (error) {
-            setErrorMessage(error.message || "Le service est momentanément indisponible.");
+            console.error("Erreur lors de la connexion :", error);
+            dispatch(loginFailure("Erreur de connexion"));
         }
     };
     return (
@@ -63,7 +65,7 @@ export default function SignInForm() {
             </div>
 
             <button type="submit" className={styles.signInButton}>Sign In</button>
-            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+            {error && <p className={styles.errorMessage}>{error}</p>}
         </form >
     );
 }
