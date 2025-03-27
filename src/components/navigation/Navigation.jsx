@@ -22,16 +22,21 @@ export default function Navigation() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
             {isAuthenticated ? (
-                <>
+                <div>
                     <Link to="/user-dashboard" className={styles.navLink}>
-                        <i className="fa fa-user-circle"></i>{user?.firstName}
+                        <i className="fa fa-user-circle"></i>
+                        {user?.firstName}
                     </Link>
 
-                    <button onClick={handleLogout} className={styles.navLink}>Sign Out</button>
-                </>
+                    <Link to="/" onClick={handleLogout} className={styles.navLink}>
+                        <i className="fa fa-sign-out"></i>
+                        Sign Out
+                    </Link>
+                </div>
             ) : (
                 <Link to="/sign-in" className={styles.navLink}>
-                    <i className="fa fa-user-circle"></i>Sign In
+                    <i className="fa fa-user-circle"></i>
+                    Sign In
                 </Link>
             )}
         </nav>
