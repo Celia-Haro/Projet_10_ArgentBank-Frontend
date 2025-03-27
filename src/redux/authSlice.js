@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Vérifier si un token est stocké
 const initialToken = localStorage.getItem("token");
 
 const initialState = {
