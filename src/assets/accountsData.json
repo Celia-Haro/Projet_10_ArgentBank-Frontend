@@ -1,0 +1,97 @@
+{
+  "accounts": [
+    {
+      "name": "Argent Bank Checking",
+      "number": "x8349",
+      "balance": 2082.79,
+      "transactions": [
+        {
+          "date": "25/03/25",
+          "description": "Grocery Store",
+          "transaction_type": "Debit Card",
+          "category": "Groceries",
+          "note": "Weekly shopping",
+          "amount": -120.50,
+          "balance": 2082.79
+        },
+        {
+          "date": "24/03/25",
+          "description": "Electric Bill",
+          "transaction_type": "Online Payment",
+          "category": "Utilities",
+          "note": "March electricity bill",
+          "amount": -85.20,
+          "balance": 2203.29
+        },
+        {
+          "date": "22/03/25",
+          "description": "Salary Deposit",
+          "transaction_type": "Direct Deposit",
+          "category": "Income",
+          "note": "Monthly salary",
+          "amount": 2500.00,
+          "balance": 2288.49
+        }
+      ]
+    },
+    {
+      "name": "Argent Bank Savings",
+      "number": "x6712",
+      "balance": 10928.42,
+      "transactions": [
+        {
+          "date": "20/03/25",
+          "description": "Interest Payment",
+          "transaction_type": "Bank Credit",
+          "category": "Savings",
+          "note": "Quarterly interest",
+          "amount": 28.42,
+          "balance": 10928.42
+        },
+        {
+          "date": "10/03/25",
+          "description": "Transfer from Checking",
+          "transaction_type": "Internal Transfer",
+          "category": "Savings",
+          "note": "Monthly savings transfer",
+          "amount": 500.00,
+          "balance": 10900.00
+        }
+      ]
+    },
+    {
+      "name": "Argent Bank Credit Card",
+      "number": "x8349",
+      "balance": 184.30,
+      "transactions": [
+        {
+          "date": "26/03/25",
+          "description": "Restaurant",
+          "transaction_type": "Credit Card Payment",
+          "category": "Dining",
+          "note": "Dinner with friends",
+          "amount": -45.75,
+          "balance": 184.30
+        },
+        {
+          "date": "22/03/25",
+          "description": "Gas Station",
+          "transaction_type": "Credit Card Payment",
+          "category": "Transportation",
+          "note": "Fuel refill",
+          "amount": -60.00,
+          "balance": 230.05
+        },
+        {
+          "date": "20/03/25",
+          "description": "Credit Card Payment",
+          "transaction_type": "Bank Payment",
+          "category": "Debt Payment",
+          "note": "Monthly credit card payment",
+          "amount": 300.00,
+          "balance": 290.05
+        }
+      ]
+    }
+  ]
+}
