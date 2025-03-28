@@ -1,12 +1,14 @@
 {
   "accounts": [
     {
+      "id": "1",
       "name": "Argent Bank Checking",
       "number": "x8349",
       "balance": "2,082.79",
       "type": "Available Balance",
       "transactions": [
         {
+          "id": "1a",
           "date": "25/03/25",
           "description": "Grocery Store",
           "transaction_type": "Debit Card",
@@ -16,6 +18,7 @@
           "balance": 2082.79
         },
         {
+          "id": "1b",
           "date": "24/03/25",
           "description": "Electric Bill",
           "transaction_type": "Online Payment",
@@ -25,6 +28,7 @@
           "balance": 2203.29
         },
         {
+          "id": "1c",
           "date": "22/03/25",
           "description": "Salary Deposit",
           "transaction_type": "Direct Deposit",
@@ -36,12 +40,14 @@
       ]
     },
     {
+      "id": "2",
       "name": "Argent Bank Savings",
       "number": "x6712",
       "balance": "10,928.42",
       "type": "Available Balance",
       "transactions": [
         {
+          "id": "2a",
           "date": "20/03/25",
           "description": "Interest Payment",
           "transaction_type": "Bank Credit",
@@ -51,6 +57,7 @@
           "balance": 10928.42
         },
         {
+          "id": "2b",
           "date": "10/03/25",
           "description": "Transfer from Checking",
           "transaction_type": "Internal Transfer",
@@ -62,12 +69,14 @@
       ]
     },
     {
+      "id": "3",
       "name": "Argent Bank Credit Card",
       "number": "x8349",
       "balance": "184.30",
       "type": "Current Balance",
       "transactions": [
         {
+          "id": "3a",
           "date": "26/03/25",
           "description": "Restaurant",
           "transaction_type": "Credit Card Payment",
@@ -77,6 +86,7 @@
           "balance": 184.30
         },
         {
+          "id": "3b",
           "date": "22/03/25",
           "description": "Gas Station",
           "transaction_type": "Credit Card Payment",
@@ -86,6 +96,7 @@
           "balance": 230.05
         },
         {
+          "id": "3c",
           "date": "20/03/25",
           "description": "Credit Card Payment",
           "transaction_type": "Bank Payment",

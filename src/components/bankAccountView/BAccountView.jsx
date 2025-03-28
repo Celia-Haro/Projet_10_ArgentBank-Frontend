@@ -6,7 +6,9 @@ export default function BAccountView({ name, number, balance, type, transactions
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/user-account-detail");
+        navigate("/user-account-detail", {
+            state: { name, number, balance, type, transactions }
+        });
     }
 
 

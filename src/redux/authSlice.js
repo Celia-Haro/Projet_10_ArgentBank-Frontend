@@ -21,6 +21,7 @@ const authSlice = createSlice({
             localStorage.setItem("token", action.payload.token);
         },
         loginFailure: (state, action) => {
+            console.log(state)
             state.error = action.payload;
         },
         logout: (state) => {
