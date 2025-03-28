@@ -3,7 +3,8 @@
     {
       "name": "Argent Bank Checking",
       "number": "x8349",
-      "balance": 2082.79,
+      "balance": "2,082.79",
+      "type": "Available Balance",
       "transactions": [
         {
           "date": "25/03/25",
@@ -37,7 +38,8 @@
     {
       "name": "Argent Bank Savings",
       "number": "x6712",
-      "balance": 10928.42,
+      "balance": "10,928.42",
+      "type": "Available Balance",
       "transactions": [
         {
           "date": "20/03/25",
@@ -62,7 +64,8 @@
     {
       "name": "Argent Bank Credit Card",
       "number": "x8349",
-      "balance": 184.30,
+      "balance": "184.30",
+      "type": "Current Balance",
       "transactions": [
         {
           "date": "26/03/25",

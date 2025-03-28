@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/argentBankLogo.webp"
 import styles from "./navigation.module.scss"
 import { useDispatch, useSelector } from "react-redux";
