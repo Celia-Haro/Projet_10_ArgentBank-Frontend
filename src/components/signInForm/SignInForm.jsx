@@ -7,6 +7,7 @@ import styles from "./signInForm.module.scss";
 export default function SignInForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const error = useSelector((state) => state.auth.error);
@@ -21,21 +22,26 @@ export default function SignInForm() {
 
             const data = await response.json();
             if (response.ok) {
-                console.log("ça a marché");
-                localStorage.setItem('token', data.body.token);
+                console.log("Connexion réussie !");
+                sessionStorage.setItem("token", data.body.token);
+
+                if (rememberMe) {
+                    localStorage.setItem("token", data.body.token);
+                    localStorage.setItem("rememberMe", "true");
+                } else {
+                    localStorage.removeItem("rememberMe");
+                }
             } else {
-                throw new Error(data.message || "Login failed");
+                throw new Error(data.message || "Échec de la connexion");
             }
             return data.body.token;
         } catch (error) {
             dispatch(loginFailure(error.message));
-
         }
     };
 
-    const fetchUserProfile = async () => {
+    const fetchUserProfile = async (token) => {
         try {
-            const token = localStorage.getItem('token');
             const response = await fetch("http://localhost:3001/api/v1/user/profile", {
                 method: "GET",
                 headers: {
@@ -45,7 +51,7 @@ export default function SignInForm() {
             });
 
             const userData = await response.json();
-            if (!response.ok) throw new Error(userData.message || "User fetch failed");
+            if (!response.ok) throw new Error(userData.message || "Échec de la récupération de l'utilisateur");
 
             return userData.body;
         } catch (error) {
@@ -60,12 +66,16 @@ export default function SignInForm() {
         const token = await loginUser(email, password);
         if (token) {
             const userData = await fetchUserProfile(token);
+
             if (userData) {
-                console.log(userData)
                 dispatch(loginSuccess({ user: userData, token }));
+                sessionStorage.setItem("user", JSON.stringify(userData));
+
+                if (rememberMe) {
+                    localStorage.setItem("user", JSON.stringify(userData));
+                }
                 navigate("/user-dashboard");
             }
-            navigate("/user-dashboard");
         }
     };
 
@@ -91,7 +101,12 @@ export default function SignInForm() {
             </div>
 
             <div className={styles.inputRemember}>
-                <input type="checkbox" id="remember-me" />
+                <input
+                    type="checkbox"
+                    id="remember-me"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                />
                 <label htmlFor="remember-me">Remember me</label>
             </div>
 
