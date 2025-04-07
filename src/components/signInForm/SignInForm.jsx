@@ -23,18 +23,11 @@ export default function SignInForm() {
             const data = await response.json();
             if (response.ok) {
                 console.log("Connexion réussie !");
-                sessionStorage.setItem("token", data.body.token);
-
-                if (rememberMe) {
-                    localStorage.setItem("token", data.body.token);
-                    localStorage.setItem("rememberMe", "true");
-                } else {
-                    localStorage.removeItem("rememberMe");
-                }
+                return data.body.token;
             } else {
                 throw new Error(data.message || "Échec de la connexion");
             }
-            return data.body.token;
+
         } catch (error) {
             dispatch(loginFailure(error.message));
         }
@@ -68,12 +61,7 @@ export default function SignInForm() {
             const userData = await fetchUserProfile(token);
 
             if (userData) {
-                dispatch(loginSuccess({ user: userData, token }));
-                sessionStorage.setItem("user", JSON.stringify(userData));
-
-                if (rememberMe) {
-                    localStorage.setItem("user", JSON.stringify(userData));
-                }
+                dispatch(loginSuccess({ user: userData, token, rememberMe }));
                 navigate("/user-dashboard");
             }
         }
