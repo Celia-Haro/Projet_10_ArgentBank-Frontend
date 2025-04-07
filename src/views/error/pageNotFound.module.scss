@@ -1,0 +1,33 @@
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    h1 {
+        font-size: 42px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    a {
+        color: #1b937b;
+        ;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .errorContainer {
+        h1 {
+            font-size: 26px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+}
