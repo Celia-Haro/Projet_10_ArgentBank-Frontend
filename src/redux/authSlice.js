@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const rememberMe = localStorage.getItem("rememberMe") === true;
+const rememberMe = localStorage.getItem("rememberMe") === "true"; // corrige ici aussi
 
 const storedToken = rememberMe ? localStorage.getItem("token") : sessionStorage.getItem("token");
 const storedUser = rememberMe ? localStorage.getItem("user") : sessionStorage.getItem("user");
@@ -10,6 +10,7 @@ const initialState = {
     token: storedToken ? storedToken : null,
     isAuthenticated: !!storedToken,
     error: null,
+    rememberMe: rememberMe,
 };
 
 const authSlice = createSlice({
@@ -22,18 +23,18 @@ const authSlice = createSlice({
             state.rememberMe = action.payload.rememberMe;
             state.isAuthenticated = true;
             state.error = null;
+
             sessionStorage.setItem("token", action.payload.token);
             sessionStorage.setItem("user", JSON.stringify(action.payload.user));
 
             if (state.rememberMe === true) {
-                console.log(state.rememberMe, state.user, state.token)
                 localStorage.setItem("token", action.payload.token);
                 localStorage.setItem("user", JSON.stringify(action.payload.user));
-            }
-            else {
-                localStorage.removeItem("token")
-                localStorage.removeItem("user")
-                console.log("rememberMe est false")
+                localStorage.setItem("rememberMe", true);
+            } else {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+                localStorage.setItem("rememberMe", false);
             }
         },
         loginFailure: (state, action) => {
@@ -51,8 +52,21 @@ const authSlice = createSlice({
             localStorage.removeItem("user");
             localStorage.removeItem("rememberMe");
         },
+
+        updateUser: (state, action) => {
+            if (state.user) {
+                state.user.userName = action.payload.userName;
+
+                const updatedUser = JSON.stringify(state.user);
+                if (state.rememberMe) {
+                    localStorage.setItem("user", updatedUser);
+                } else {
+                    sessionStorage.setItem("user", updatedUser);
+                }
+            }
+        }
     },
 });
 
-export const { loginSuccess, loginFailure, logout } = authSlice.actions;
+export const { loginSuccess, loginFailure, logout, updateUser } = authSlice.actions;
 export default authSlice.reducer;

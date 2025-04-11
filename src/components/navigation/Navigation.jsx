@@ -25,7 +25,7 @@ export default function Navigation() {
                 <div>
                     <Link to="/user-dashboard" className={styles.navLink}>
                         <i className="fa fa-user-circle"></i>
-                        {user?.firstName}
+                        {user?.userName}
                     </Link>
 
                     <Link to="/" onClick={handleLogout} className={styles.navLink}>
