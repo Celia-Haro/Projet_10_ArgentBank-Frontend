@@ -6,36 +6,37 @@
     align-items: center;
     margin: auto;
     width: 400px;
-}
 
-.blocInput {
-    display: flex;
-    width: 100%;
-    gap: 5px;
-    justify-content: right;
-    align-items: center;
+    .blocInput {
+        display: flex;
+        width: 100%;
+        gap: 5px;
+        justify-content: right;
+        align-items: center;
 
-    input {
-        margin-right: 50px;
-        width: 200px;
-        padding: 5px;
-        font-size: 16px;
+        input {
+            margin-right: 50px;
+            width: 200px;
+            padding: 5px;
+            font-size: 16px;
+        }
     }
-}
 
-.blocAction {
-    display: flex;
-    margin: 20px 0;
-    width: 100%;
-    gap: 15px;
-    justify-content: center;
-}
+    .blocAction {
+        display: flex;
+        margin: 20px 0;
+        width: 100%;
+        gap: 15px;
+        justify-content: center;
 
-.actionButton {
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px;
-    width: 150px;
+        .actionButton {
+            border-color: #00bc77;
+            background-color: #00bc77;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px;
+            width: 150px;
+        }
+    }
+
 }
