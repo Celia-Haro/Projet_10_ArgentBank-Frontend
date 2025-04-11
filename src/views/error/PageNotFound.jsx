@@ -6,7 +6,7 @@ export default function PageNotFound() {
         <div className={styles.errorContainer}>
             <h1>404 - Page not found</h1>
             <p>The page you are looking for does not exist.</p>
-            <Link to="/">Homepage</Link>
+            <Link to="/"> - Homepage -</Link>
         </div>
     )
 }

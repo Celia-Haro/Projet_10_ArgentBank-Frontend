@@ -1,24 +1,36 @@
-import { useLocation } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function UserAccountDetail() {
+    const account = useSelector((state) => state.account.selectedAccount);
+    const navigate = useNavigate();
 
-    const location = useLocation();
-    const { name, balance, type, transactions } = location.state || {};
+    useEffect(() => {
+        if (!account) {
+            navigate("/user-dashboard");
+        }
+    }, [account, navigate]);
+
+    if (!account) return null;
 
     return (
-        <>
-            <p>je suis le composant UserAccountDetail</p>
-            <div>
-                <h2>Détails du compte</h2>
-                <h3>{name}</h3>
-                <p>{balance}</p>
-                <p>{type}</p>
-                <ul>
-                    {transactions?.map((transaction) => (
-                        <li key={transaction.id}>{transaction.description}</li>
-                    ))}
-                </ul>
-            </div>
-        </>
-    )
+        <div>
+            {/* !! Créer le bandeau pour avoir une vue du compte */}
+            <h1>{account.name} ({account.number})</h1>
+            <p>Balance: ${account.balance}</p>
+            <p>Type: {account.type}</p>
+
+            <h2>Transactions</h2>
+
+            {/* !! utiliser le composant transaction collapse pour chaque transaction */}
+            <ul>
+                {account.transactions?.map((tx, index) => (
+                    <li key={index}>
+                        {tx.date} - {tx.description} - ${tx.amount}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }

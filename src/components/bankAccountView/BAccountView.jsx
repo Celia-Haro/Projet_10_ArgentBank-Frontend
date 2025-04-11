@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom";
 import styles from "./bAccount.module.scss"
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSelectedAccount } from "../../redux/accountSlice";
 
 export default function BAccountView({ name, number, balance, type, transactions }) {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
 
     const handleClick = () => {
-        navigate("/user-account-detail", {
-            state: { name, number, balance, type, transactions }
-        });
-    }
-
+        dispatch(setSelectedAccount({ name, number, balance, type, transactions }));
+        navigate("/user-account-detail");
+    };
 
     return (
         <>
@@ -21,7 +23,7 @@ export default function BAccountView({ name, number, balance, type, transactions
                     <p className={styles.accountAmountDescription}> {type}</p>
                 </div>
                 <div className={`${styles.accountContentWrapper} ${styles.cta}`}>
-                    <button onClick={handleClick} transactions={transactions} className={styles.transactionButton}>View transactions</button>
+                    <button onClick={handleClick} className={styles.transactionButton}>View transactions</button>
                 </div>
             </section>
         </>

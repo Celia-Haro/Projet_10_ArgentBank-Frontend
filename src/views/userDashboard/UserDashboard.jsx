@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react'; // OBLIGATOIRE
+import { useState } from 'react';
 import data from '../../assets/accountsData.json';
 import BAccountView from '../../components/bankAccountView/BAccountView';
 import styles from "./userDashboard.module.scss";
@@ -7,7 +7,7 @@ import EditUserForm from '../../components/editUserForm/EditUserForm';
 
 export default function UserDashboard() {
     const user = useSelector((state) => state.auth.user);
-    const [showForm, setShowForm] = useState(false); // L'état est ici
+    const [showForm, setShowForm] = useState(false);
 
     const toggleForm = () => {
         setShowForm(true);
