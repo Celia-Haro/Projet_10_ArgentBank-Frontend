@@ -21,11 +21,12 @@ export const router = createBrowserRouter([
             },
             {
                 element: <PrivateRoute />,
-                children:
-                {
-                    path: 'user-dashboard',
-                    element: <UserDashboard />,
-                }
+                children: [
+                    {
+                        path: 'user-dashboard',
+                        element: <UserDashboard />,
+                    },
+                ],
             },
             {
                 path: '*',
