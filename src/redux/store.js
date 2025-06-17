@@ -1,20 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import storageSession from "redux-persist/lib/storage/session";
 import { combineReducers } from 'redux';
 import authReducer from "./authSlice";
-import accountReducer from "./accountSlice";
-
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    account: accountReducer,
 });
 
+const rememberMe = localStorage.getItem("rememberMe") === "true";
 
 const persistConfig = {
     key: 'root',
-    storage,
+    storage: rememberMe ? storage : storageSession,
     whitelist: ['auth'],
 };
 
