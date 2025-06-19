@@ -22,7 +22,6 @@ export default function SignInForm() {
 
             const data = await response.json();
             if (response.ok) {
-                console.log("Connexion réussie !");
                 return data.body.token;
             } else {
                 throw new Error(data.message || "Échec de la connexion");

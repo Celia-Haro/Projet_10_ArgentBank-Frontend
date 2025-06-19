@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const rememberMe = localStorage.getItem("rememberMe") === "true"; // corrige ici aussi
+const rememberMe = localStorage.getItem("rememberMe") === "true";
 
 const storedToken = rememberMe ? localStorage.getItem("token") : sessionStorage.getItem("token");
 const storedUser = rememberMe ? localStorage.getItem("user") : sessionStorage.getItem("user");
