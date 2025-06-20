@@ -30,11 +30,11 @@ const authSlice = createSlice({
             if (state.rememberMe === true) {
                 localStorage.setItem("token", action.payload.token);
                 localStorage.setItem("user", JSON.stringify(action.payload.user));
-                localStorage.setItem("rememberMe", true);
+                localStorage.setItem("rememberMe", "true");
             } else {
                 localStorage.removeItem("token");
                 localStorage.removeItem("user");
-                localStorage.setItem("rememberMe", false);
+                localStorage.setItem("rememberMe", "false");
             }
         },
         loginFailure: (state, action) => {
@@ -50,7 +50,7 @@ const authSlice = createSlice({
             sessionStorage.removeItem("user");
             localStorage.removeItem("token");
             localStorage.removeItem("user");
-            localStorage.removeItem("rememberMe");
+            localStorage.setItem("rememberMe", "false");
         },
 
         updateUser: (state, action) => {
